@@ -1,0 +1,79 @@
+{
+  "name": "anchor-pki",
+  "description": "Anchor is a hosted PKI platform for your internal organization.",
+  "author": "Anchor Security, Inc. (https://anchor.dev)",
+  "version": "0.3.1",
+  "type": "commonjs",
+  "license": "MIT",
+  "homepage": "https://anchor.dev",
+  "engines": {
+    "node": "^16.13.0 || >=18.0.0"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./auto-cert": "./src/auto-cert/index.js",
+    "./auto-cert/manager": "./src/auto-cert/manager.js",
+    "./auto-cert/sni-callback": "./src/auto-cert/sni-callback.js",
+    "./auto-cert/configuration": "./src/auto-cert/configuration.js",
+    "./auto-cert/identifier-policy": "./src/auto-cert/identifier-policy.js",
+    "./auto-cert/integrations/next": "./src/auto-cert/integrations/next/index.js",
+    "./auto-cert/managed-certificate": "./src/auto-cert/managed-certificate.js",
+    "./auto-cert/policy-check": "./src/auto-cert/policy-check.js",
+    "./auto-cert/policy-check/for-hostname": "./src/auto-cert/policy-check/for-hostname.js",
+    "./auto-cert/policy-check/for-wildcard-hostname": "./src/auto-cert/policy-check/for-wildcard-hostname.js",
+    "./auto-cert/policy-check/for-ip-address": "./src/auto-cert/policy-check/for-ip-address.js",
+    "./auto-cert/terms-of-service-acceptor": "./src/auto-cert/terms-of-service-acceptor.js",
+    "./auto-cert/terms-of-service-acceptor/any": "./src/auto-cert/terms-of-service-acceptor/any.js",
+    "./auto-cert/terms-of-service-acceptor/regex": "./src/auto-cert/terms-of-service-acceptor/regex.js"
+  },
+  "imports": {
+    "#chai-local": "./test/chai-local.js",
+    "#polly-local": "./test/polly-local.js",
+    "#filter-fs-persister": "./test/filter-fs-persister.js",
+    "#fixtures": "./test/fixtures.js"
+  },
+  "files": [
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha --timeout 10000 \"test/**/*.test.js\"",
+    "coverage": "nyc --reporter=html --reporter=text yarn run test",
+    "example:server": "node ./example/server.js"
+  },
+  "dependencies": {
+    "acme-client": "~5.3.0",
+    "cacache": "~18.0.1",
+    "http-proxy": "^1.18.1",
+    "ip-cidr": "^3.1.0"
+  },
+  "devDependencies": {
+    "@pollyjs/adapter-node-http": "^6.0.6",
+    "@pollyjs/core": "^6.0.6",
+    "@pollyjs/persister-fs": "^6.0.6",
+    "@pollyjs/utils": "^6.0.6",
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "mocha": "^10.2.0",
+    "mockdate": "^3.0.5",
+    "nyc": "^15.1.0"
+  },
+  "resolutions": {
+    "string-width": "^4.2.3",
+    "strip-ansi": "^6.0.1"
+  },
+  "keywords": [
+    "acme",
+    "client",
+    "anchordotdev",
+    "anchor",
+    "pki",
+    "X509",
+    "auto_cert"
+  ]
+}
