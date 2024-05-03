@@ -155,7 +155,9 @@ class Manager {
         }
         else {
             termsOfServiceAgreed = true; // no tos so we agree
-            this.log.warn(`[anchor-pki] No Terms of Service exist so agreed : ${termsOfServiceAgreed}`);
+            if (typeof this.log.debug === 'function') {
+                this.log.debug(`[anchor-pki] No Terms of Service exist so agreed : ${termsOfServiceAgreed}`);
+            }
         }
 
         const cert = await client.auto({

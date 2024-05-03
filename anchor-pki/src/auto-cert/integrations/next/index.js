@@ -49,6 +49,15 @@ function configureProxy(autoCertConfig, port) {
         });
     });
 
+    server.on('upgrade', (req, socket, _head) => {
+        proxy.ws(req, socket, {
+            target: {
+                host: bindingHost,
+                port
+            }
+        });
+    });
+
     server.on('error', (err) => {
         if (err.code === 'EADDRINUSE') {
             return;
